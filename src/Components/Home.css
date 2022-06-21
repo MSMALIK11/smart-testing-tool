@@ -13,7 +13,7 @@
 
 .container {
     Width: 100%;
-    Height: 100vh;
+    min-height: 100vh;
     background-color: #F5F3E7;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@
 
 .menu-btn {
     width: 70%;
-    Height: 200px;
+    Height: 150px;
     display: flex;
     background-color: #FFFFFF;
     flex-direction: column;
@@ -65,6 +65,7 @@
     font-size: 10px;
     font-weight: bold;
     background-color: white;
+    cursor: pointer;
 }
 
 #checkbox {
@@ -81,12 +82,14 @@
     background-color: var(--action-bg);
     width: 50%;
     box-shadow: none;
+    cursor: auto;
 }
 
 #icCard {
     width: 40%;
     background-color: var(--action-bg);
     box-shadow: none;
+    cursor: auto;
 }
 
 .btn-s2 {
@@ -99,6 +102,7 @@
     font-size: 10px;
     font-weight: bold;
     background-color: white;
+    cursor: pointer;
 }
 
 .bgs2 {
@@ -113,20 +117,45 @@
 /* Port status. */
 
 .port-status {
-    width: 90%;
-    height: 40vh;
+    width: auto;
+    height: auto;
     background-color: white;
     margin: 5px auto;
     border-radius: 4px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(15, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 4px;
+
 }
 
 .status {
-    width: 50px;
-    height: 50px;
-    background-color: var(--component-bg);
+    width: 80px;
+    height: 60px;
+    background-color: #F1F3F5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 4px;
+
 }
 
 .status>* {
-    font-size: 8px;
-    margin: 0;
+    font-size: 9px;
+    margin-top: 10px;
+    color: black;
+    padding: 0 2px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#lockernumber {
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.lockopen {
+    background-color: #F6E05E;
 }
