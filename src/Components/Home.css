@@ -122,9 +122,9 @@
     background-color: white;
     margin: 5px auto;
     border-radius: 4px;
-    padding: 10px;
+    padding: 10px 100px;
     display: grid;
-    grid-template-columns: repeat(15, auto);
+    grid-template-columns: repeat(11, auto);
     grid-template-rows: repeat(4, auto);
     gap: 4px;
 
@@ -158,4 +158,26 @@
 
 .lockopen {
     background-color: #F6E05E;
+}
+
+
+/* Logs */
+
+.logs {
+    width: 100%;
+    height: 40vh;
+    background-color: #F5F3E7;
+}
+
+.logs::before {
+    margin: 10px auto;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: #F6E05E;
+}
+
+.logs>* {
+    padding: 20px 14px;
 }

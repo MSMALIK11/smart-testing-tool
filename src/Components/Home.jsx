@@ -299,6 +299,10 @@ function Home() {
 
             </div>
 
+            <div className="logs">
+                <p>logs for working</p>
+            </div>
+
         </div>
 
     )
