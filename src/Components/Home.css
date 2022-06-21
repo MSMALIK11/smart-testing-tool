@@ -1,0 +1,132 @@
+:root {
+    --color-primiry: #F6E05E;
+    --action-bg: #F2F2F2;
+    --primiry-btn: #8338EC;
+    --component-bg: #F1F3F5;
+}
+
+*,
+**:after,
+**::before {
+    box-sizing: border-box;
+}
+
+.container {
+    Width: 100%;
+    Height: 100vh;
+    background-color: #F5F3E7;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.action-btn {
+    display: flex;
+    margin: 10px auto;
+}
+
+.action-btn>button {
+    width: 123px;
+    padding: 10px 19px;
+    margin-left: 10px;
+    height: 40px;
+}
+
+.action-btn .btn-primary {
+    background-color: var(--primiry-btn);
+    color: white;
+}
+
+.menu-btn {
+    width: 70%;
+    Height: 200px;
+    display: flex;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    margin: 10px auto;
+    border-radius: 15px;
+}
+
+.section1,
+.section2 {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    margin: 17px 5px;
+}
+
+.btn {
+    padding: 10px 22px;
+    border-radius: 50px;
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: 0px 5px 11.6px 2.49px rgba(211, 211, 211, 0.3);
+    font-size: 10px;
+    font-weight: bold;
+    background-color: white;
+}
+
+#checkbox {
+    width: 100px;
+    padding: 10px 15px;
+    background-color: var(--action-bg);
+}
+
+.btn-secondry {
+    background-color: var(--color-primiry);
+}
+
+.input-field {
+    background-color: var(--action-bg);
+    width: 50%;
+    box-shadow: none;
+}
+
+#icCard {
+    width: 40%;
+    background-color: var(--action-bg);
+    box-shadow: none;
+}
+
+.btn-s2 {
+    padding: 15px 39px;
+    border-radius: 50px;
+    color: black;
+    border: none;
+    outline: none;
+    box-shadow: 0px 5px 11.6px 2.49px rgba(211, 211, 211, 0.3);
+    font-size: 10px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.bgs2 {
+    background-color: #FF9F99;
+}
+
+.exits2 {
+    background-color: var(--primiry-btn);
+    color: white;
+}
+
+/* Port status. */
+
+.port-status {
+    width: 90%;
+    height: 40vh;
+    background-color: white;
+    margin: 5px auto;
+    border-radius: 4px;
+}
+
+.status {
+    width: 50px;
+    height: 50px;
+    background-color: var(--component-bg);
+}
+
+.status>* {
+    font-size: 8px;
+    margin: 0;
+}
