@@ -181,3 +181,44 @@
 .logs>* {
     padding: 20px 14px;
 }
+
+
+
+
+/* Loadboard */
+
+.lockboard {
+    height: 150px;
+    /* padding: 10px 5px; */
+    margin: 20px 0;
+}
+
+.lockboard-testing {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    width: 70%;
+    min-height: 150px;
+    margin: 10px auto;
+    border-radius: 5px;
+
+}
+
+.action {
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+    align-items: flex-end;
+    padding: 18px 10px;
+    justify-content: space-evenly;
+}
+
+/* title */
+#title {
+    font-size: 10px;
+    font-weight: bold;
+    margin: 6px 9px;
+    /* margin: 0; */
+
+}
