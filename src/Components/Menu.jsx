@@ -1,7 +1,9 @@
 import React from 'react'
 
-function Menu() {
+function Menu({ props }) {
+    // console.log(props.toggleLocker(44));
     return (
+
         <>
             <div className="action-btn">
                 <button className='btn btn-primary'>Home</button>
@@ -14,6 +16,10 @@ function Menu() {
                         <option value=""> 55</option>
                         <option value=""> 32 </option>
                         <option value=""> 44 </option>
+                    </select>
+                    <select onChange={(e) => props.toggleLocker(e.target.value)} defaultValue="L" className='btn' name="toggleLocker" id="checkbox">
+                        <option value="L">Left</option>
+                        <option value="R">Right</option>
                     </select>
 
                     <button className='btn btn-secondry'>Open Port</button>

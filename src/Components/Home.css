@@ -13,16 +13,17 @@
 
 .container {
     Width: 100%;
-    min-height: 100vh;
+    max-height: 100vh;
     background-color: #F5F3E7;
     display: flex;
     flex-direction: column;
+    position: absolute;
 
 }
 
 .action-btn {
     display: flex;
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 .action-btn>button {
@@ -38,8 +39,8 @@
 }
 
 .menu-btn {
-    width: 70%;
-    Height: 150px;
+    width: 60%;
+    height: auto;
     display: flex;
     background-color: #FFFFFF;
     flex-direction: column;
@@ -52,12 +53,13 @@
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
-    margin: 17px 5px;
+    margin: 10px 5px;
 }
 
 .btn {
-    padding: 10px 22px;
-    border-radius: 50px;
+    padding: .5rm .7rm;
+    /* padding: 10px 22px; */
+    border-radius: 3px;
     color: black;
     border: none;
     outline: none;
@@ -69,8 +71,8 @@
 }
 
 #checkbox {
-    width: 100px;
-    padding: 10px 15px;
+    width: 4rem;
+    padding: 10px 7px;
     background-color: var(--action-bg);
 }
 
@@ -93,8 +95,8 @@
 }
 
 .btn-s2 {
-    padding: 15px 39px;
-    border-radius: 50px;
+    padding: .7rem;
+    border-radius: 5px;
     color: black;
     border: none;
     outline: none;
@@ -116,29 +118,38 @@
 
 /* Port status. */
 
-.port-status {
-    width: auto;
-    height: auto;
+.statusContainer {
+    width: 95%;
+    height: 40vh;
     background-color: white;
-    margin: 5px auto;
+    margin: auto;
+    margin-bottom: 20px;
     border-radius: 4px;
-    padding: 10px 100px;
+    padding: 10px 10px;
+    overflow-y: scroll;
+}
+
+.port-status {
+    min-width: 70%;
     display: grid;
-    grid-template-columns: repeat(11, auto);
-    grid-template-rows: repeat(4, auto);
-    gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    /* grid-template-columns: repeat(15, auto);
+    grid-template-rows: repeat(auto, auto); */
+    gap: 1px;
 
 }
 
+
+
 .status {
-    width: 80px;
-    height: 60px;
+    width: 70px;
+    height: 40px;
     background-color: #F1F3F5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     border-radius: 4px;
-
+    cursor: pointer;
 }
 
 .status>* {
@@ -148,6 +159,12 @@
     padding: 0 2px;
     text-align: center;
     font-weight: bold;
+}
+
+.status>p {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 15;
 }
 
 #lockernumber {
@@ -165,8 +182,11 @@
 
 .logs {
     width: 100%;
-    height: 40vh;
+    height: auto;
     background-color: #F5F3E7;
+    position: relative;
+    bottom: 0px;
+    z-index: 99;
 }
 
 .logs::before {
@@ -178,11 +198,20 @@
     background: #F6E05E;
 }
 
-.logs>* {
-    padding: 20px 14px;
+
+
+
+.log {
+    margin: 1px auto;
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
 }
 
-
+.log>p {
+    /* padding: 20px 14px; */
+    margin: 5px 10px;
+}
 
 
 /* Loadboard */

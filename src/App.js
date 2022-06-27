@@ -3,8 +3,8 @@ import Home from "./Components/Home";
 import Lockboard from './Components/Lockboard';
 function App() {
   return (
-    // <Home />
-    <Lockboard />
+    <Home />
+    // <Lockboard />
 
   );
 }
