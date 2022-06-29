@@ -1,15 +1,28 @@
 
-// import React, { useEffect, useState } from 'react'
 import "./Home.css";
 import Menu from './Menu';
 import Locker from './Locker';
 import { useQuery } from "react-query";
 
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
+
+export let totalLocker;
+
+let temparr = ["44", "44", "44", "44", "44", "44", "44", "44", "44", "44", "44", "44"]; // Only testing purpose.
+
 
 function Home() {
 
+    const ele = useRef(null);
+    useEffect(() => {
+        const domscroll = ele.current
+        if (domscroll) {
+            domscroll.scrollTop = domscroll.scrollHeight;
+        }
+    });
     let lockerInfo = [];
+    totalLocker = lockerInfo;
+
     const [locker, setLocker] = useState("L");
 
     function toggleLocker(id) {
@@ -20,14 +33,11 @@ function Home() {
         return fetch("http://localhost:3000/locker_status").then(res => res.json())
     });
 
-    console.log(data?.openLocker);
-
-
     if (isLoading) {
-        return <h3>Wait someTime</h3>
+        return <h3 className="loader" data-testid="loading">Wait someTime</h3>
     }
     if (isError) {
-        return <h3>SomeThing Went Wrong. </h3>
+        return <h3 className="loader" data-testid="error">SomeThing Went Wrong</h3>
     }
     if (isSuccess) {
         data?.lockerStatus.forEach((lockerid) => {
@@ -50,22 +60,35 @@ function Home() {
                 open: true,
                 empty: true,
                 position: l
-            })
+            });
         });
-        // Time Compexty  => O log n + O log n => o n
-        lockerInfo.sort((a, b) => a.lockerno > b.lockerno ? -1 : 1).sort((a, b) => a.position === "L" ? -1 : 1);
+        // Time Compexty  => O log n + O log n => o n  // 
+        // lockerInfo.sort((a, b) => a.lockerno > b.lockerno ? -1 : 1).sort((a, b) => a.position === "L" ? -1 : 1);
     }
+    // Time Complexty => filter o(n) + o(log n ) = O n (log n)
+    const leftLocker = lockerInfo.filter((locker, index) => {
+        return locker.position === "L" ? true : false;
+    }).sort((a, b) => {
+        return a.lockerno < b.lockerno ? -1 : 1
+    });
+    const rightLocker = lockerInfo.filter((locker, index) => {
+        return locker.position === "R" ? true : false;
+    }).sort((a, b) => {
+        return a.lockerno < b.lockerno ? -1 : 1
+    });;
+    // console.log("LeftLocker", leftLock);
+    // console.log("RightLock", rightLock);
     // o(1) time complxcty.
-    let leftLocker = lockerInfo.slice(0, 152);
-    let rightLocker = lockerInfo.slice(152);
+    // let leftLocker = lockerInfo.slice(0, 152);
+    // let rightLocker = lockerInfo.slice(152);
 
     // O log N      
-    rightLocker.sort((a, b) => {
-        if (a.lockerno < b.lockerno) {
-            return -1;
-        }
-        return 1;
-    });
+    // rightLocker.sort((a, b) => {
+    //     if (a.lockerno < b.lockerno) {
+    //         return -1;
+    //     }
+    //     return 1;
+    // });
 
     return (
         <div className="container">
@@ -89,32 +112,20 @@ function Home() {
                                     )
                                 })
                             )
-
-
                     }
                 </div>
             </div>
 
             <div className="logs">
-                <div className="log">
+                <div id="ele" ref={ele} className="log">
                     <p>logs for working</p>
                     <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
-                    <p>logs for working</p>
+
+                    {
+                        temparr.map((e, i) => {
+                            return <p key={i} id="log">hello world</p>
+                        })
+                    }
                 </div>
 
             </div>

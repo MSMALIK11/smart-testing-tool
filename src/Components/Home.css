@@ -186,7 +186,6 @@
     background-color: #F5F3E7;
     position: relative;
     bottom: 0px;
-    z-index: 99;
 }
 
 .logs::before {
@@ -250,4 +249,57 @@
     margin: 6px 9px;
     /* margin: 0; */
 
+}
+
+/* Loader. */
+
+
+.loader {
+    margin: 10px auto;
+}
+
+/*  Slim Scrolbar. */
+.statusContainer::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.statusContainer::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.statusContainer::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.statusContainer::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/*  Slim Scrolbar. */
+.log::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.log::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.log::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.log::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, 0.3);
 }

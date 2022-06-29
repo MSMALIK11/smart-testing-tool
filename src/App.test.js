@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render } from "@testing-library/react";
+import { QueryClientProvider, QueryClient } from "react-query";
+import App from "./App"
+const client = new QueryClient();
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Hello react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test("Render the App Component", () => {
+    render(
+        <QueryClientProvider client={client}>
+            <App />
+        </QueryClientProvider>
+    )
+})
