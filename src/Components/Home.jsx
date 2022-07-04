@@ -2,36 +2,131 @@
 import "./Home.css";
 import Menu from './Menu';
 import Locker from './Locker';
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { useRef, useState, useEffect } from "react";
+import { LogMemo } from "./Sections/Log";
 
 export let totalLocker;
 
-let temparr = ["44", "44", "44", "44", "44", "44", "44", "44", "44", "44", "44", "44"]; // Only testing purpose.
+let ssecall = 0;
+
+
+// Sse Event Function.
+let e;
+const sse = () => {
+    if (!ssecall) {
+        ssecall++
+        return e = new EventSource('http://localhost:9080/api/v1/relaylocker/sse/getlockerevents')
+    }
+    return e;
+}
 
 
 function Home() {
 
+    const event = sse()
+
+    const queryClient = useQueryClient()
     const ele = useRef(null);
+
+
+    const [log, setLog] = useState();
+    // let log;
+
     useEffect(() => {
         const domscroll = ele.current
         if (domscroll) {
             domscroll.scrollTop = domscroll.scrollHeight;
+            domscroll.innerHTML = `<p>${log}</p>`
         }
-    });
+    }, [log]);
+
+    // useEffect(() => {
+    //     setLog((priviousValue) => {
+    //         return [...priviousValue, "data"]
+    //     });
+    // }, []);
+
     let lockerInfo = [];
-    totalLocker = lockerInfo;
+
+    totalLocker = lockerInfo; // only for testing purpose.
 
     const [locker, setLocker] = useState("L");
+
+
+    const mutation = useMutation(({ lockerno, position }) => {
+        const posiitonId = position === "L" ? 0 : 1
+        return fetch(`http://localhost:9080/api/v1/relaylocker/openlocker/${lockerno}?side=${posiitonId}`, {
+            method: "POST"
+        })
+    }, {
+        onSuccess: async (data, variables, context) => {
+            console.log(await data.json());
+            queryClient.invalidateQueries('lockerStatus');
+        },
+        onError: (error, variables, context) => {
+
+        }
+    })
+
+    // localhost:9080/api/v1/relaylocker/openlocker/1?side=0
+    function openLocker({ lockerno, position }) {
+        mutation.mutate({ lockerno, position })
+    }
 
     function toggleLocker(id) {
         setLocker(id);
     }
 
-    const { isLoading, isError, isSuccess, data } = useQuery("locker Status", async () => {
-        return fetch("http://localhost:3000/locker_status").then(res => res.json())
+    const { isLoading, isError, isSuccess, data } = useQuery("lockerStatus", async () => {
+        return fetch("http://localhost:9080/api/v1/relaylocker/lockerstatus").then(res => res.json())
     });
+
+
+
+
+
+
+    // Server Side Event Code.
+
+    event.onopen = () => {
+        console.log("Connection is SuccessFull.");
+        event.onmessage = (e) => {
+            const { data } = e;
+            console.log(data);
+            if (!data.relayEventType || data.relayEventType) {
+                queryClient.invalidateQueries('lockerStatus');
+                log = "hello";
+                setLog((priviousValue) => {
+                    return [data]
+                });
+                console.log(data);
+            }
+
+        }
+    }
+
+    event.onerror = function err(e) {
+        console.log("coudnot connect server.");
+        return false;
+    }
+    // if (event.readyState === 1) {
+
+
+    // console.log(event.readyState);
+
+
+
+
+
+
+
+    // Server Side Evnet Code.
+
+
+
+
 
     if (isLoading) {
         return <h3 className="loader" data-testid="loading">Wait someTime</h3>
@@ -40,7 +135,8 @@ function Home() {
         return <h3 className="loader" data-testid="error">SomeThing Went Wrong</h3>
     }
     if (isSuccess) {
-        data?.lockerStatus.forEach((lockerid) => {
+        const { locker_status } = data?._data;
+        locker_status?.closed_lockers?.forEach((lockerid) => {
             const l = lockerid.split("")[0]
             const lno = lockerid.match(/\d/g).join("");
             lockerInfo.push({
@@ -52,7 +148,7 @@ function Home() {
         });
 
         // Check the locker is open or not. if open then push the data into a locker info.
-        data?.openLocker.forEach((lockerid) => {
+        locker_status?.opened_lockers.forEach((lockerid) => {
             const l = lockerid.split("")[0]
             const lno = lockerid.match(/\d/g).join("");
             lockerInfo.push({
@@ -100,7 +196,7 @@ function Home() {
                         locker === "L" ? (
                             leftLocker?.map((locker, index) => {
                                 return (
-                                    <Locker key={index} props={locker} />
+                                    <Locker key={index} props={{ locker, openLocker }} />
                                 )
                             })
                         )
@@ -108,7 +204,7 @@ function Home() {
                             (
                                 rightLocker?.map((locker, index) => {
                                     return (
-                                        <Locker key={index} props={locker} />
+                                        <Locker key={index} props={{ locker, openLocker }} />
                                     )
                                 })
                             )
@@ -118,13 +214,16 @@ function Home() {
 
             <div className="logs">
                 <div id="ele" ref={ele} className="log">
-                    <p>logs for working</p>
-                    <p>logs for working</p>
+                    {
+                        // log.map((d, i) => {
+                        //     return <LogMemo key={i} props={d} />
+                        // })
+                    }
 
                     {
-                        temparr.map((e, i) => {
-                            return <p key={i} id="log">hello world</p>
-                        })
+                        // log?.map((log, index) => {
+                        //     return <p key={index}>{log}</p>
+                        // })
                     }
                 </div>
 

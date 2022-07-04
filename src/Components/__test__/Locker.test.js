@@ -1,7 +1,6 @@
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import Locker from "../Locker";
 import { useMutation } from "react-query";
-import { locker } from "../Locker"
 
 
 
@@ -13,7 +12,7 @@ jest.mock("react-query", () => {
 });
 
 describe("Testing The Locker Component", () => {
-
+    let lock; // Lock contain the lockNo Which pass by the openLocker Function.
 
     afterEach(() => {
         cleanup();
@@ -37,8 +36,12 @@ describe("Testing The Locker Component", () => {
         empty: false
     }
 
+    const openLocker = ({ lockerno, position }) => {
+        lock = lockerno;
+    } // The locker function. Its only for testing.
+
     test("Testing the className which change the color data and color when locker is open", () => {
-        render(<Locker props={{ ...props }} />)
+        render(<Locker props={{ locker: { ...props }, openLocker }} />)
 
         const lockerDiv = screen.getByTestId("locker");
         expect(lockerDiv.className).toBe("status lockopen")
@@ -46,36 +49,37 @@ describe("Testing The Locker Component", () => {
 
 
     test("When the locker open status is not true", () => {
-        render(<Locker props={{ ...notopen }} />)
+        render(<Locker props={{ locker: { ...notopen }, openLocker }} />)
         const lockerDiv = screen.getByTestId("locker");
         expect(lockerDiv.className).toBe("status")
     })
     test("Check the locker no.", () => {
-        render(<Locker props={{ ...notopen }} />)
+        render(<Locker props={{ locker: { ...props }, openLocker }} />)
         const lockerDiv = screen.getByTestId("locker");
         const { firstChild } = lockerDiv;
         expect(firstChild.textContent).toBe("234");
     })
     test("Open Close status when open status is true", () => {
-        render(<Locker props={{ ...props }} />)
+        render(<Locker props={{ locker: { ...props }, openLocker }} />)
         const lockerDiv = screen.getByTestId("locker");
         const { lastElementChild } = lockerDiv
         expect(lastElementChild.textContent).toBe("open");
     })
 
     test("Open Close test when open status is flase", () => {
-        render(<Locker props={{ ...notopen }} />)
+        render(<Locker props={{ locker: { ...notopen }, openLocker }} />)
         const lockerDiv = screen.getByTestId("locker");
         const { lastElementChild } = lockerDiv;
         expect(lastElementChild.textContent).toBe("close|Empty");
     })
 
+
     test("OnClick Locker component testing", () => {
-        render(<Locker props={{ ...props }} />);
+        render(<Locker props={{ locker: { ...props }, openLocker }} />);
         const ele = screen.getByTestId("locker");
         const { firstChild } = ele
         fireEvent.click(firstChild);
-        expect(parseInt(firstChild.textContent)).toEqual(locker)
+        expect(parseInt(firstChild.textContent)).toEqual(lock)
     })
 
 

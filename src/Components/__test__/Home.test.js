@@ -5,44 +5,52 @@ import { useQuery } from "react-query";
 import { totalLocker } from "../Home";
 
 const data = {
-    lockerStatus: [
-        "L1",
-        "L2",
-        "L4",
-        "L6",
-        "L8",
-        "L10",
-        "L11",
-        "L12",
-        "L13",
-        "L14",
-        "L15",
-        "L16",
-        "L17",
-        "L18",
-        "L19",
-        "L21",
-        "L22",
-        "L23"
-    ],
-    openLocker: [
-        "L3",
-        "L5",
-        "L7",
-        "L9",
-        "L20"
-    ]
+    _data: {
+        locker_status: {
+            opened_lockers: [
+                "L1",
+                "L2",
+                "L4",
+                "L6",
+                "L8",
+                "L10",
+                "L11",
+                "L12",
+                "L13",
+                "L14",
+                "L15",
+                "L16",
+                "L17",
+                "L18",
+                "L19",
+                "L21",
+                "L22",
+                "L23"
+            ],
+            closed_lockers: [
+                "L3",
+                "L5",
+                "L7",
+                "L9",
+                "L20"
+            ]
+        }
+
+
+    }
+
 }
 
 let totalData = [];
 
-totalData.push(...data.lockerStatus, ...data.openLocker);
+totalData.push(...data._data.locker_status.opened_lockers, ...data._data.locker_status.closed_lockers);
 
 
 jest.mock("react-query", () => {
     return {
         useQuery: jest.fn(),
-        useMutation: jest.fn()
+        useMutation: jest.fn(),
+        useQueryClient: jest.fn()
     }
 });
 

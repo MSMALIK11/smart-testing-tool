@@ -85,6 +85,7 @@
     width: 50%;
     box-shadow: none;
     cursor: auto;
+    padding: 0 8px;
 }
 
 #icCard {
@@ -92,6 +93,7 @@
     background-color: var(--action-bg);
     box-shadow: none;
     cursor: auto;
+    padding: 0 8px;
 }
 
 .btn-s2 {
