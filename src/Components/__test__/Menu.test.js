@@ -1,4 +1,5 @@
 import Menu from "../Menu/Menu";
+
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 
 
@@ -11,11 +12,11 @@ describe("Check the Menu component", () => {
     })
 
 
-    test("Check the primary home btn is render or not", () => {
-        render(<Menu />);
-        const primaryBtn = screen.getByTestId("primary-btn");
-        expect(primaryBtn.textContent).toBe("Home");
-    });
+    // test("Check the primary home btn is render or not", () => {
+    //     render(<Menu />);
+    //     const primaryBtn = screen.getByTestId("primary-btn");
+    //     expect(primaryBtn.textContent).toBe("Home");
+    // });
 
     test("Left and Right option in dropdown", () => {
         render(<Menu />);

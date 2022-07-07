@@ -9,7 +9,7 @@ function Section2() {
         <SectionButton
           title="Check Power"
           dataTestId="checkPowerBtn"
-          btnClass="bgs-2 inut-field"
+          btnClass="bgs2"
         />
         {/* <button data-testid="checkPowerBtn" className="btn-s2 bgs2">
           Check Power
@@ -17,7 +17,7 @@ function Section2() {
         <SectionButton
           title="Check Version"
           dataTestId="checkVersionBtn"
-          btnClass="btn-secondry"
+          btnClass=""
         />
         
 
