@@ -23,7 +23,7 @@ const SelectBox = ({
           data.map((item) => {
             return (
               <option
-                data-testid={dataTestId}
+                data-testid={item.testId && item.testId}
               
                 onChange={toggleLocker}
                 value={item.val}

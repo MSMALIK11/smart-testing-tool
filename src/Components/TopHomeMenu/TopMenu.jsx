@@ -13,7 +13,7 @@ const TopMenu = () => {
         <SectionButton
           title="Home"
           btnClass="btn-lg"
-          dataTestId="primary-btn"
+          dataTestId=""
         />
        
       

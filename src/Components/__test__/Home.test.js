@@ -1,8 +1,8 @@
 
 import { render, cleanup, screen } from "@testing-library/react";
-import Home from "../Home";
+import Home from "../Home/Home";
 import { useQuery } from "react-query";
-import { totalLocker } from "../Home";
+import { totalLocker } from "../Home/Home";
 
 const data = {
     _data: {

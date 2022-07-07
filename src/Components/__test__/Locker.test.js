@@ -1,5 +1,5 @@
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
-import Locker from "../Locker";
+import Locker from "../Locker/Locker";
 import { useMutation } from "react-query";
 
 

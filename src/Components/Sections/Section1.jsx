@@ -25,12 +25,14 @@ function Section1({ toggleLocker }) {
     {
       id: 1,
       val: "L",
-      tagName: "left",
+      tagName: "Left",
+      testId:'left'
     },
     {
       id: 2,
       val: "R",
-      tagName:'right',
+      tagName:'Right',
+      testId:'right'
     },
   ];
   return (
@@ -40,12 +42,12 @@ function Section1({ toggleLocker }) {
         data={value}
         defaultValue="55"
         id="checkbox"
-        dataTestId="toggle-input"
+        dataTestId="toggle-port"
       />
      
       <SectionButton
         variant="secondary"
-        title="open port"
+        title="Open Port"
         dataTestId="openPortBtn"
      
       />
