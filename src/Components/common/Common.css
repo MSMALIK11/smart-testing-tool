@@ -1,0 +1,14 @@
+.input-field {
+    background-color: var(--action-bg);
+    width: 50%;
+    box-shadow: none;
+    cursor: auto;
+   padding: 16px 25px ;
+}
+
+.btn-secondry {
+    background-color: var(--color-primiry);
+}
+.bgs2 {
+    background-color: #FF9F99;
+}

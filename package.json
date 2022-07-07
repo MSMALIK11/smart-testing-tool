@@ -2,6 +2,7 @@
   "name": "testingreact",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -13,7 +14,7 @@
     "web-vitals": "^2.1.4",
     "winston": "^3.8.1"
   },
-  "proxy": "http://localhost:9080",
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

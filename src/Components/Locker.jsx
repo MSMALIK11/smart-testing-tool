@@ -7,15 +7,15 @@ function Locker({ props }) {
 
 
     return (
-        <>
+        <div className='lockerStatusWraper'>
             <div onClick={() => props.openLocker({ lockerno: props.locker.lockerno, position: props.locker.position })} data-testid="locker" className={props?.locker.open ? "status lockopen" : "status"}>
-                <p id='lockernumber'>{props?.locker.lockerno}</p>
-                <p>{props.locker?.open ? "open" : "close|Empty"}</p>
+                <span id='lockernumber'>{props?.locker.lockerno}</span>
+                <span>{props.locker?.open ? "open" : "close|Empty"}</span>
             </div>
 
-        </>
+        </div>
 
     )
 }
 
-export default Locker
+export default Locker;

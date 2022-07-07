@@ -6,6 +6,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { useRef, useState, useEffect } from "react";
 import { LogMemo } from "./Sections/Log";
+import TopMenu from "./TopHomeMenu/TopMenu";
 
 export let totalLocker;
 
@@ -23,16 +24,19 @@ const sse = () => {
 }
 
 
+
+
 function Home() {
 
     const event = sse()
 
-    const queryClient = useQueryClient()
+    const queryClient = useQueryClient();
     const ele = useRef(null);
 
-
+const [dValue,setdValue]=useState('');
     const [log, setLog] = useState();
     // let log;
+
 
     useEffect(() => {
         const domscroll = ele.current
@@ -40,8 +44,10 @@ function Home() {
             domscroll.scrollTop = domscroll.scrollHeight;
             domscroll.innerHTML = `<p>${log}</p>`
         }
+       
     }, [log]);
 
+    
     // useEffect(() => {
     //     setLog((priviousValue) => {
     //         return [...priviousValue, "data"]
@@ -75,14 +81,26 @@ function Home() {
         mutation.mutate({ lockerno, position })
     }
 
-    function toggleLocker(id) {
-        setLocker(id);
+    const toggleLocker=(e)=>{
+    
+      alert(e.target.value)
+      setdValue(e.target.value)
+  setLocker(e.target.value);
     }
+   
 
-    const { isLoading, isError, isSuccess, data } = useQuery("lockerStatus", async () => {
-        return fetch("http://localhost:9080/api/v1/relaylocker/lockerstatus").then(res => res.json())
-    });
+    // const { isLoading, isError, isSuccess, data } = useQuery("lockerStatus", async () => {
+    //     return fetch("http://localhost:9080/api/v1/relaylocker/lockerstatus").then(res => res.json())
+    // });
 
+     const { isLoading, isError, isSuccess, data, error } = useQuery(
+       "lockerStatus",
+       async () => {
+         return fetch("http://localhost:3000/locker_status").then((res) =>
+           res.json()
+         );
+       }
+     );
 
 
 
@@ -151,6 +169,7 @@ function Home() {
         locker_status?.opened_lockers.forEach((lockerid) => {
             const l = lockerid.split("")[0]
             const lno = lockerid.match(/\d/g).join("");
+            console.log(lno)
             lockerInfo.push({
                 lockerno: parseInt(lno),
                 open: true,
@@ -172,7 +191,7 @@ function Home() {
     }).sort((a, b) => {
         return a.lockerno < b.lockerno ? -1 : 1
     });;
-    // console.log("LeftLocker", leftLock);
+    
     // console.log("RightLock", rightLock);
     // o(1) time complxcty.
     // let leftLocker = lockerInfo.slice(0, 152);
@@ -185,52 +204,49 @@ function Home() {
     //     }
     //     return 1;
     // });
+   
 
     return (
-        <div className="container">
-            <Menu props={{ toggleLocker }} />
-            <div className="statusContainer">
-                <div className="port-status">
-                    {
-                        // lockopen // time complixcty o(n)
-                        locker === "L" ? (
-                            leftLocker?.map((locker, index) => {
-                                return (
-                                    <Locker key={index} props={{ locker, openLocker }} />
-                                )
-                            })
-                        )
-                            :
-                            (
-                                rightLocker?.map((locker, index) => {
-                                    return (
-                                        <Locker key={index} props={{ locker, openLocker }} />
-                                    )
-                                })
-                            )
-                    }
-                </div>
-            </div>
+      <div className="container">
+        <TopMenu />
 
-            <div className="logs">
-                <div id="ele" ref={ele} className="log">
-                    {
-                        // log.map((d, i) => {
-                        //     return <LogMemo key={i} props={d} />
-                        // })
-                    }
-
-                    {
-                        // log?.map((log, index) => {
-                        //     return <p key={index}>{log}</p>
-                        // })
-                    }
-                </div>
-
-            </div>
+        <Menu toggleLocker={toggleLocker} />
+        <div className="statusContainer">
+          <div className="port-status">
+            {
+              // lockopen // time complixcty o(n)
+              locker === "L"
+                ? leftLocker?.map((locker, index) => {
+                    return (
+                      <Locker key={index} props={{ locker, openLocker }} />
+                    );
+                  })
+                : rightLocker?.map((locker, index) => {
+                    return (
+                      <Locker key={index} props={{ locker, openLocker }} />
+                    );
+                  })
+            }
+          </div>
         </div>
 
-    )
+        <div className="logs">
+          <div id="ele" ref={ele} className="log">
+            {
+              // log.map((d, i) => {
+              //     return <LogMemo key={i} props={d} />
+              // })
+            }
+
+            {
+              // log?.map((log, index) => {
+              //     return <p key={index}>{log}</p>
+              // })
+            }
+          </div>
+        </div>
+      </div>
+    );
 }
 
 export default Home
