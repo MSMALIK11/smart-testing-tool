@@ -1,4 +1,4 @@
-import Menu from "../Menu";
+import Menu from "../Menu/Menu";
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 
 

@@ -1,12 +1,12 @@
 
-import "./Home.css";
-import Menu from './Menu';
-import Locker from './Locker';
+import "../Home.css";
+import Menu from '../Menu/Menu';
+import Locker from '../Locker/Locker';
 import { useQuery, useMutation, useQueryClient } from "react-query";
 
 import { useRef, useState, useEffect } from "react";
-import { LogMemo } from "./Sections/Log";
-import TopMenu from "./TopHomeMenu/TopMenu";
+
+import TopMenu from "../TopHomeMenu/TopMenu";
 
 export let totalLocker;
 
@@ -33,7 +33,7 @@ function Home() {
     const queryClient = useQueryClient();
     const ele = useRef(null);
 
-const [dValue,setdValue]=useState('');
+// const [dValue,setdValue]=useState('');
     const [log, setLog] = useState();
     // let log;
 
@@ -83,8 +83,8 @@ const [dValue,setdValue]=useState('');
 
     const toggleLocker=(e)=>{
     
-      alert(e.target.value)
-      setdValue(e.target.value)
+      
+     
   setLocker(e.target.value);
     }
    

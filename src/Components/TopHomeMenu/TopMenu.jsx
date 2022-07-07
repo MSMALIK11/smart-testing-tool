@@ -1,14 +1,21 @@
 import React from 'react'
+import SectionButton from '../common/SectionButton';
 
 const TopMenu = () => {
   return (
     <div className="topHomeMenu">
-      <div className="action-btn">
-        <button data-testid="primary-btn" className="btn btn-primary">
-          Home
-        </button>
-        <button className="btn">Home</button>
-      </div>
+   
+        <SectionButton
+          title="Home"
+          btnClass="btn-primary btn-lg"
+          dataTestId="primary-btn"
+        />
+        <SectionButton
+          title="Home"
+          btnClass="btn-lg"
+          dataTestId="primary-btn"
+        />
+       
       
     </div>
   );

@@ -21,119 +21,10 @@
 
 }
 
-.action-btn {
-    display: flex;
-    margin: 5px auto;
-}
-
-.action-btn>button {
-    width: 123px;
-    padding: 10px 19px;
-    margin-left: 10px;
-    height: 40px;
-}
-
-.action-btn .btn-primary {
-    background-color: var(--primiry-btn);
-    color: white;
-}
-
-.menu-btn-container {
-    width: 60vw;
-    height: 250px;
-    display: flex;
-    /* align-items: center; */
- justify-content: center;
-    background-color: #FFFFFF;
-    flex-direction: column;
-    margin: 10px auto;
-    border-radius: 15px;
-}
+ 
 
 
-.menu-btn{
-    display: flex;
-  
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-   padding: 0  20px;
-}
-.section1,
-.section2 {
-    display: flex;
-gap: 30px;
-  
-   
-}
 
-.btn {
-    padding: .5rem 1.625rem;
-    /*padding: 10px 20px;
-    *//*border-radius: 3px;
-    */color: black;
-    border: none;
-    outline: none;
-    box-shadow: 0px 5px 11.6px 2.49px rgba(211, 211, 211, 0.3);
-    font-size: 10px;
-    font-weight: bold;
-    background-color: white;
-    cursor: pointer;
-    text-transform: capitalize;
-    border-radius: 273.677px;
-    -webkit-border-radius: 273.677px;
-    -moz-border-radius: 273.677px;
-    -ms-border-radius: 273.677px;
-    -o-border-radius: 273.677px;
-}
-
-.btn-secondry {
-    background-color: var(--color-primiry);
-}
-#checkbox {
-    width: 4rem;
-    padding: 10px 7px;
-    background-color: var(--action-bg);
-}
-
-
-/* .input-field {
-    background-color: var(--action-bg);
-    width: 50%;
-    box-shadow: none;
-    cursor: auto;
-    padding: 0 8px;
-} */
-
-#icCard {
-    width: 40%;
-    background-color: var(--action-bg);
-    box-shadow: none;
-    cursor: auto;
-    padding: 0 8px;
-}
-
-.btn-s2 {
-    padding: .7rem;
-    border-radius: 5px;
-    color: black;
-    border: none;
-    outline: none;
-    box-shadow: 0px 5px 11.6px 2.49px rgba(211, 211, 211, 0.3);
-    font-size: 10px;
-    font-weight: bold;
-    background-color: white;
-    cursor: pointer;
-}
-
-.bgs2 {
-    background-color: #FF9F99;
-}
-
-.exits2 {
-    background-color: var(--primiry-btn);
-    color: white;
-}
 
 /* Port status. */
 
@@ -146,6 +37,7 @@ gap: 30px;
     border-radius: 4px;
     padding: 10px 10px;
     overflow-y: scroll;
+    
 }
 
 .port-status {
@@ -158,55 +50,7 @@ gap: 30px;
 
 }
 
-.lockerStatusWraper{
-display: flex;
-align-items: center;
 
-
-
-}
-
-.status {
-    width: 60px;
-    height: 50px;
-    background-color: #F1F3F5;
-    display: flex;
-   
-    gap: 5px;
-    
-    flex-wrap: wrap;
-    flex-direction: column; 
-     justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-    cursor: pointer;
-
-}
-
-.status :first-child {
-    font-size: 12px;
-    
-    color: black;
-    
-    text-align: center;
-    font-weight: 700;
-}
-
-.status:last-child {
-   
-    font-size: 10px;
-    font-weight: 400;
-}
-
-#lockernumber {
-    text-align: center;
-    font-weight: bold;
-
-}
-
-.lockopen {
-    background-color: #F6E05E;
-}
 
 
 /* Logs */
@@ -289,28 +133,7 @@ align-items: center;
     margin: 10px auto;
 }
 
-/*  Slim Scrolbar. */
-.statusContainer::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-}
 
-.statusContainer::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-}
-
-.statusContainer::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-}
-
-.statusContainer::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255, 255, 255, 0.3);
-}
 
 /*  Slim Scrolbar. */
 .log::-webkit-scrollbar {
@@ -334,3 +157,4 @@ align-items: center;
 .log::-webkit-scrollbar-thumb:window-inactive {
     background: rgba(255, 255, 255, 0.3);
 }
+

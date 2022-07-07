@@ -1,4 +1,5 @@
 import React from "react";
+import './Sections.css'
 import InputBox from "../common/InputBox";
 import SectionButton from "../common/SectionButton";
 import SelectBox from "../common/SelectBox";
@@ -41,20 +42,14 @@ function Section1({ toggleLocker }) {
         id="checkbox"
         dataTestId="toggle-input"
       />
-      {/* <select className="btn" name="" id="checkbox">
-        <option value=""> 55</option>
-        <option value=""> 32 </option>
-        <option value=""> 44 </option>
-      </select> */}
+     
       <SectionButton
         variant="secondary"
         title="open port"
         dataTestId="openPortBtn"
      
       />
-      {/* <button data-testid="openPortBtn" className="btn btn-secondry">
-          Open Port
-        </button> */}
+     
       <SelectBox
         name="checkBox"
         data={value2}
@@ -64,29 +59,13 @@ function Section1({ toggleLocker }) {
         dataTestId="toggle-input"
 
       />
-      {/* <select
-        data-testid="toggle-input"
-        onChange={(e) => props.toggleLocker(e.target.value)}
-        defaultValue="L"
-        className="btn"
-        name="toggleLocker"
-        id="checkbox"
-      >
-        <option data-testid="left" value="L">
-          Left
-        </option>
-        <option data-testid="right" value="R">
-          Right
-        </option>
-      </select> */}
+     
       <SectionButton
         title="Scanner On"
         btnClass="btn-secondary"
         dataTestId="scannerBtn"
       />
-      {/* <button data-testid="scannerBtn" className="btn">
-          Scanner On
-        </button> */}
+     
 
       <InputBox
         type="text"
@@ -96,14 +75,7 @@ function Section1({ toggleLocker }) {
         id=""
         dataTestId="barcoadScannerInput"
       />
-      {/* <input
-          data-testid="barcoadScannerInput"
-          className="btn input-field"
-          placeholder="Barcoad Scanner"
-          type="text"
-          name="barcoadScanner"
-          id=""
-        /> */}
+      
     </div>
   );
 }

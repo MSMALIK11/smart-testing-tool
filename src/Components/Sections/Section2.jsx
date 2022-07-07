@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './Sections.css'
 import InputBox from '../common/InputBox'
 import SectionButton from '../common/SectionButton';
 
@@ -6,7 +7,7 @@ function Section2() {
     return (
       <div className="section2">
         <SectionButton
-          title="check power"
+          title="Check Power"
           dataTestId="checkPowerBtn"
           btnClass="bgs-2 inut-field"
         />
@@ -14,14 +15,11 @@ function Section2() {
           Check Power
         </button> */}
         <SectionButton
-          title="check version"
+          title="Check Version"
           dataTestId="checkVersionBtn"
-          btnClass="btn-secondry input-field"
+          btnClass="btn-secondry"
         />
-        {/* <button data-testid="checkVersionBtn" className="btn-s2">
-          Check Version
-        </button> */}
-        {/* custom input box */}
+        
 
         <InputBox
           type="text"

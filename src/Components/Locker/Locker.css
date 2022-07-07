@@ -1,0 +1,49 @@
+.lockerStatusWraper{
+display: flex;
+align-items: center;
+
+
+
+}
+
+.status {
+    width: 60px;
+    height: 50px;
+    background-color: #F1F3F5;
+    display: flex;
+   
+    gap: 5px;
+    
+    flex-wrap: wrap;
+    flex-direction: column; 
+     justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+.status :first-child {
+    font-size: 12px;
+    
+    color: black;
+    
+    text-align: center;
+    font-weight: 700;
+}
+
+.status:last-child {
+   
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#lockernumber {
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.lockopen {
+    background-color: #F6E05E;
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Home.css";
+import './Locker.css'
 // import { useMutation } from "react-query";
 
 
