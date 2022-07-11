@@ -1,7 +1,8 @@
 import React from 'react'
 import './Common.css'
 const SectionButton = ({dataTestId,title,btnClass}) => {
-  console.log('btn class',btnClass)
+
+  console.log('section button  component ')
   return (
     <button
       data-testid={dataTestId}
@@ -12,4 +13,4 @@ const SectionButton = ({dataTestId,title,btnClass}) => {
   );
 }
 
-export default SectionButton
+export default React.memo(SectionButton)

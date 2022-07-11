@@ -5,6 +5,7 @@ import SectionButton from "../common/SectionButton";
 import SelectBox from "../common/SelectBox";
 
 function Section1({ toggleLocker }) {
+  console.log('secion 1 component')
   const value = [
     {
       id: 1,
@@ -82,4 +83,4 @@ function Section1({ toggleLocker }) {
   );
 }
 
-export default Section1;
+export default React.memo(Section1);

@@ -4,6 +4,7 @@ import InputBox from '../common/InputBox'
 import SectionButton from '../common/SectionButton';
 
 function Section2() {
+  console.log('section 2 component')
     return (
       <div className="section2">
         <SectionButton
@@ -37,4 +38,4 @@ function Section2() {
     );
 }
 
-export default Section2
+export default React.memo(Section2)

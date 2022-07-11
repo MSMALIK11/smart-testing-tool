@@ -2,7 +2,8 @@ import React from 'react';
 
 const SelectBox = ({
   toggleLocker,
-  dValue,dataTestId,
+  defaultValue,
+  dataTestId,
   handleSelectChange,
   name,
   id,
@@ -13,8 +14,7 @@ const SelectBox = ({
       <select
         data-testid={dataTestId}
         onChange={handleSelectChange}
-        defaultValue={dValue}
-      
+        defaultValue={defaultValue}
         className="btn"
         name={name}
         id={id}
@@ -23,8 +23,8 @@ const SelectBox = ({
           data.map((item) => {
             return (
               <option
+                key={item.id}
                 data-testid={item.testId && item.testId}
-              
                 onChange={toggleLocker}
                 value={item.val}
               >

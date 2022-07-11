@@ -2,7 +2,7 @@ import React from "react"
 
 
 function Log({ props }) {
-    console.log(props);
+    // console.log(props);
     return (
         <p>{props}  </p>
     )

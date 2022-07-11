@@ -1,0 +1,34 @@
+
+/* Logs */
+
+.logs {
+    width: 100%;
+    height: auto;
+    background-color: #F5F3E7;
+    position: relative;
+    bottom: 10px;
+} 
+
+.logs::before {
+    margin: 10px auto;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    background: #F6E05E;
+}
+
+
+
+
+.log {
+    margin: 1px auto;
+    width: 100%;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.log>p {
+    /* padding: 20px 14px; */
+    margin: 5px 10px;
+}
